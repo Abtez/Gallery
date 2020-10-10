@@ -1,6 +1,6 @@
 from django.db import models
 
-class location(models.Model):
+class Location(models.Model):
     name = models.CharField(max_length =30)
 
     def __str__(self):
@@ -16,11 +16,11 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images/')
     image_name = models.CharField(max_length=40)
     description = models.TextField()
-    tags = models.ManyToManyField(location)
+    location = models.ManyToManyField(Location)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,default='')
     
     def __str__(self):
-        return self.first_name
+        return self.image_name
     
     def save_image(self):
         self.save()

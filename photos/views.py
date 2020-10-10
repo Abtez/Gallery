@@ -4,4 +4,5 @@ from .models import *
 
 
 def main(request):
-    return render(request,'index.html')
+    images = Image.objects.all()
+    return render(request,'index.html',{'images':images})
