@@ -1,11 +1,23 @@
 from django.db import models
 
+class location(models.Model):
+    name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.name
+    
+class Category(models.Model):
+    name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.name
+    
 class Image(models.Model):
     image = models.ImageField(upload_to='images/')
     image_name = models.CharField(max_length=40)
     description = models.TextField()
-    tags = models.ManyToManyField(Location)
-    Category = models.ForeignKey(Category, on_delete=models.CASCADE,)
+    tags = models.ManyToManyField(location)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,default='')
     
     def __str__(self):
         return self.first_name
@@ -18,15 +30,4 @@ class Image(models.Model):
         photos = cls.objects.filter(category__icontains=search_term)
         return photos
         
-class Location(models.Model):
-    name = models.CharField(max_length =30)
-
-    def __str__(self):
-        return self.name
-    
-class Category(models.Model):
-    name = models.CharField(max_length =30)
-
-    def __str__(self):
-        return self.name
     
