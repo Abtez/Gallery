@@ -23,6 +23,13 @@
 </div>
 <br>
 <div class="container">
+    <form  role="search" action="{% url 'searchPage' %}">
+        <div class="md-form my-0">
+          <input class="form-control" name="images" type="text" placeholder="Search By Category" aria-label="Search">
+          <input type="submit" name="images" class="btn btn-sm btn-info">
+        </div>
+      </form>
+      <br>
     <div class="row">
       <div class="col-md-9">
         <div class="row">
