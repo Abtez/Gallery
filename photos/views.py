@@ -21,3 +21,6 @@ def search_images(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{'message':message})
     
+def copy(request):
+    return render(request,'copy.html')
+    

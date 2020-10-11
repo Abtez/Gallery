@@ -4,7 +4,8 @@
 <br>
 <div class="container-fluid">
 
-  <nav class="nav flex-row text-center aqua-gradient py-1 font-weight-bold z-depth-1">
+  <nav class="nav flex-row text-center aqua-gradient py-1 font-weight-bold
+    z-depth-1">
     <h3 style="text-decoration: underline;">Categories</h3>
     {% for items in category %}
 
@@ -14,17 +15,20 @@
 
   </nav>
 
- <!-- Jumbotron -->
-<div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/forest2.jpg);">
+  <!-- Jumbotron -->
+  <div class="card card-image" style="background-image:
+    url(https://mdbootstrap.com/img/Photos/Others/forest2.jpg);">
     <div class="text-white text-center rgba-stylish-strong py-5 px-4">
       <div class="py-5">
-  
+
         <!-- Content -->
-        <h5 class="h5 orange-text"><i class="fas fa-camera-retro"></i> Photography</h5>
+        <h5 class="h5 orange-text"><i class="fas fa-camera-retro"></i>
+          Photography</h5>
         <h2 class="card-title h2 my-4 py-2">Welcome To The Gallery App</h2>
-        <p class="mb-4 pb-2 px-md-5 mx-md-5">Add photos to different categories, with the location tag and share with your friends!</p>
+        <p class="mb-4 pb-2 px-md-5 mx-md-5">Add photos to different categories,
+          with the location tag and share with your friends!</p>
         <a class="btn peach-gradient">Get started</a>
-  
+
       </div>
     </div>
   </div>
@@ -33,80 +37,97 @@
 </div>
 <br>
 <div class="container">
-    <form  role="search" action="{% url 'searchPage' %}">
-        <div class="md-form my-0">
-          <input class="form-control" name="category" type="text" placeholder="Search By Category">
-          <button type="submit" class="btn btn-sm btn-info">Search</button>
-        </div>
-      </form>
-      <br>
-      
-      <div class="d-flex flex-row">
-        
-      {% for items in images %}
-  
-        <div class="row">
+  <form role="search" action="{% url 'searchPage' %}">
+    <div class="md-form my-0">
+      <input class="form-control" name="category" type="text"
+        placeholder="Search By Category">
+      <button type="submit" class="btn btn-sm btn-info">Search</button>
+    </div>
+  </form>
+  <br>
 
-            <!-- Grid column -->
-            <div class="col-lg-4 col-md-12 mb-4">
-          
-              <!--Modal: Name-->
-              <div class="modal fade" id="modal{{items.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-          
-                  <!--Content-->
-                  <div class="modal-content">
-          
-                    <!--Body-->
-                    <div class="modal-body mb-0 p-0">
-                      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                      
-          
-                        <img class="embed-responsive-item" src="{{ items.image.url }}" alt="{{ items.image_name }}" allowfullscreen>
-          
-                    </div>
-                  </div>
-                  <h3 class="embed-responsive-item text-center mr-4 mt-2" style="text-decoration: underline; color:black;">{{ items.image_name }}</h3>
-                  <span class="mr-4 text-center"><h5>{{ items.description }}</h5></span>
-                    <!--Footer-->
-                    <div class="modal-footer justify-content-center">
-                    
-                      
-                      <a type="button" class="btn-floating btn-sm btn-fb"><i class="fas fa-calendar-alt"></i>  {{ items.date }}</a>
-                      <a type="button" class="btn-floating btn-sm btn-tw"><i class="fas fa-fighter-jet"></i>  {{ items.location }}</a>
-                      <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fas fa-grip-horizontal"></i>  {{ items.category }}</a>
-          
-                      <div>
-                        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Copy Link</button>
-                        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-                      </div>
-                      
-          
-                    </div>
-          
-                  </div>
-                  <!--/.Content-->
-          
-                </div>
+
+  {% for items in images %}
+
+  <script>
+        function myFunction() {
+          var copyText = document.getElementById("myInput{{items.id}}");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+          alert("Copied the text: " + copyText.value);
+        }
+        </script>
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-lg-4 col-md-12 mb-4">
+
+      <!--Modal: Name-->
+      <div class="modal fade" id="modal{{items.id}}" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+
+          <!--Content-->
+          <div class="modal-content">
+
+            <!--Body-->
+            <div class="modal-body mb-0 p-0">
+              <div class="embed-responsive embed-responsive-16by9
+                z-depth-1-half">
+
+
+                <img class="embed-responsive-item" src="{{ items.image.url }}"
+                  alt="{{ items.image_name }}" allowfullscreen>
+
               </div>
-              <!--Modal: Name-->
-          
-              <a><img class="img-fluid z-depth-1" src="{{ items.image.url }}" alt="{{ items.image_name }}"
-                  data-toggle="modal" data-target="#modal{{items.id}}"></a>
-          
             </div>
-        </div>
-        {% endfor %}
-      </div>
-    
-    {% for items in images %}
-      <h2>{{ items.image_name }}</h2>
-      <h3>{{ items.location.name }}</h3>
-      <h4>{{ items.category }}</h4>
-      <h5>{{ items.description }}</h5>
-      <img src="{{items.image.url}}" alt="">
-    {% endfor %}
+            <h3 class="embed-responsive-item text-center mr-4 mt-2"
+              style="text-decoration: underline; color:black;">{{
+              items.image_name }}</h3>
+            <span class="mr-4 text-center"><h5>{{ items.description }}</h5></span>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
 
+
+              <a type="button" class="btn-floating btn-sm btn-fb"><i class="fas
+                  fa-calendar-alt"></i> {{ items.date }}</a>
+              <a type="button" class="btn-floating btn-sm btn-tw"><i class="fas
+                  fa-fighter-jet"></i> {{ items.location }}</a>
+              <a type="button" class="btn-floating btn-sm btn-gplus"><i
+                  class="fas fa-grip-horizontal"></i> {{ items.category }}</a>
+              <div>
+                <button type="button" class="btn btn-outline-info btn-rounded
+                  btn-md ml-4" onclick="myFunction()">Copy Link</button>
+                <button type="button" class="btn btn-outline-primary btn-rounded
+                  btn-md ml-4" data-dismiss="modal">Close</button>
+              </div>
+
+              <div>
+                <input class="form-control input-lg" type="text"
+                  value="{{items.image.url}}" id="myInput{{items.id}}">
+              </div>
+
+
+            </div>
+
+          </div>
+          <!--/.Content-->
+
+        </div>
+      </div>
+      <!--Modal: Name-->
+
+      <a><img class="img-fluid z-depth-1" src="{{ items.image.url }}" alt="{{
+          items.image_name }}"
+          data-toggle="modal" data-target="#modal{{items.id}}"></a>
+
+          
+
+    </div>
   </div>
-  
-{% endblock  %}
+
+  {% endfor %}
+</div>
+
+{% endblock %}

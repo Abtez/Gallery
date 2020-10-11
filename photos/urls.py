@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns=[
     path('', views.main, name='mainPage'), 
     path('search/', views.search_images, name='searchPage'), 
+    path('copy/', views.copy, name='copyPage'), 
 ]
 
 if settings.DEBUG:
