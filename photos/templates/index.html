@@ -35,8 +35,8 @@
 <div class="container">
     <form  role="search" action="{% url 'searchPage' %}">
         <div class="md-form my-0">
-          <input class="form-control" name="images" type="text" placeholder="Search By Category" aria-label="Search">
-          <input type="submit" name="images" class="btn btn-sm btn-info">
+          <input class="form-control" name="image" type="text" placeholder="Search By Category">
+          <input type="submit" name="image" class="btn btn-sm btn-info">
         </div>
       </form>
       <br>
@@ -51,7 +51,7 @@
             <div class="col-lg-4 col-md-12 mb-4">
           
               <!--Modal: Name-->
-              <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal fade" id="modal{{items.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
           
                   <!--Content-->
@@ -59,14 +59,19 @@
           
                     <!--Body-->
                     <div class="modal-body mb-0 p-0">
-                      <h3 class="text-center mr-4 mt-2">{{ items.image_name }}</h3>
-                    </div>
-                    <img src="{{ items.image.url }}" alt="">
+                      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                      
           
+                        <img class="embed-responsive-item" src="{{ items.image.url }}" alt="{{ items.image_name }}" allowfullscreen>
+          
+                    </div>
+                  </div>
+                  <h3 class="embed-responsive-item text-center mr-4 mt-2" style="text-decoration: underline; color:black;">{{ items.image_name }}</h3>
+                  <span class="mr-4 text-center"><h5>{{ items.description }}</h5></span>
                     <!--Footer-->
                     <div class="modal-footer justify-content-center">
                     
-                      <span class="mr-4"><h5>{{ items.description }}</h5></span>
+                      
                       <a type="button" class="btn-floating btn-sm btn-fb"><i class="fas fa-calendar-alt"></i>  {{ items.date }}</a>
                       <a type="button" class="btn-floating btn-sm btn-tw"><i class="fas fa-fighter-jet"></i>  {{ items.location }}</a>
                       <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fas fa-grip-horizontal"></i>  {{ items.category }}</a>
@@ -87,7 +92,7 @@
               <!--Modal: Name-->
           
               <a><img class="img-fluid z-depth-1" src="{{ items.image.url }}" alt="{{ items.image_name }}"
-                  data-toggle="modal" data-target="#modal1"></a>
+                  data-toggle="modal" data-target="#modal{{items.id}}"></a>
           
             </div>
         </div>
