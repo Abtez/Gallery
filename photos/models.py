@@ -17,7 +17,7 @@ class Image(models.Model):
     image_name = models.CharField(max_length=40)
     description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    location = models.ManyToManyField(Location)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE,default='')
     category = models.ForeignKey(Category, on_delete=models.CASCADE,default='')
     
     def __str__(self):

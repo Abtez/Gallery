@@ -98,6 +98,11 @@
 
       </div>
     </div>
+    {% for items in images %}
+      <h2>{{ items.image_name }}</h2>
+      <h3>{{ items.location.name }}</h3>
+      <h4>{{ items.category }}</h4>
+    {% endfor %}
 
   </div>
   

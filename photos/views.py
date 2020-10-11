@@ -6,8 +6,7 @@ from .models import *
 def main(request):
     images = Image.objects.all()
     category = Category.objects.all()
-    context = {'images':images, 'category':category}
-    return render(request,'index.html',context)
+    return render(request,'index.html',{'images':images, 'category':category})
 
 def search_images(request):
     if 'image' in request.GET and request.GET["image"]:
