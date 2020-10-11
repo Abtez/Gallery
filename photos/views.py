@@ -9,13 +9,15 @@ def main(request):
     return render(request,'index.html',{'images':images, 'category':category})
 
 def search_images(request):
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
         searched_category = Image.search_by_category(search_term)
         message = f"{search_term}"
+        print(searched_category)
 
         return render(request, 'search.html',{"message":message,"image": searched_category})
 
     else:
-        return render(request, 'search.html')
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{'message':message})
     
