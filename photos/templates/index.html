@@ -17,7 +17,7 @@
     <h3 style="text-decoration: underline;">Categories</h3>
     {% for items in category %}
 
-    <a class="nav-link active indigo-text" href="#">{{ items.name }}</a>
+    <a class="nav-link active indigo-text" href="/search/?category={{items.name}}">{{ items.name }}</a>
 
     {% endfor %}
 
