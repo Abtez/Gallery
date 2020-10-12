@@ -4,9 +4,12 @@ from .models import *
 
 
 def main(request):
-    images = Image.objects.all()
-    category = Category.objects.all()
-    location = Location.objects.all()
+    try:        
+        images = Image.objects.all()
+        category = Category.objects.all()
+        location = Location.objects.all()
+    except DoesNotExist:
+        raise Http404()
     return render(request,'index.html',{'images':images, 'category':category, 'location':location})
 
 def search_images(request):
@@ -23,7 +26,9 @@ def search_images(request):
         return render(request, 'search.html',{'message':message})
     
 def view_by_location(request,location):
-    image_location = Image.filter_by_location(location)
-    print(image_location)
+    try:
+        image_location = Image.filter_by_location(location)
+    except DoesNotExist:
+        raise Http404()
     return render(request, 'location.html',{"location": image_location})
     

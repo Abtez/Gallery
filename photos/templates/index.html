@@ -60,7 +60,7 @@
         <a class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">View Images By Location</a>
 
-        <div class="dropdown-menu">
+        <div class="dropdown-menu dropdown-primary">
         {% for items in location %}
         <a class="dropdown-item" href="/location/{{ items.name }}">{{ items.name }}</a>
         {% endfor %}
