@@ -82,3 +82,9 @@ Slack : Abzed Abdul Mohammed​
 Whatsapp : +254759507042
 
 *****
+
+## License
+
+MIT License
+
+Copyright (c) 2020 Abzed Abdul Mohammed
