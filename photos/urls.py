@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 urlpatterns=[
     path('', views.main, name='mainPage'), 
     path('search/', views.search_images, name='searchPage'), 
-    path('copy/', views.copy, name='copyPage'), 
+    path('location/<location>/', views.view_by_location, name='locationPage'), 
 ]
 
 if settings.DEBUG:

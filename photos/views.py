@@ -6,7 +6,8 @@ from .models import *
 def main(request):
     images = Image.objects.all()
     category = Category.objects.all()
-    return render(request,'index.html',{'images':images, 'category':category})
+    location = Location.objects.all()
+    return render(request,'index.html',{'images':images, 'category':category, 'location':location})
 
 def search_images(request):
     if 'category' in request.GET and request.GET["category"]:
@@ -21,6 +22,8 @@ def search_images(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{'message':message})
     
-def copy(request):
-    return render(request,'copy.html')
+def view_by_location(request,location):
+    image_location = Image.filter_by_location(location)
+    print(image_location)
+    return render(request, 'location.html',{"location": image_location,})
     

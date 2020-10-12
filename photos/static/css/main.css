@@ -1,14 +1,38 @@
-.carousel .item {
-    height: 300px;
+body{
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
   }
   
-  .item img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-height: 300px;
+  
+  /* Float four columns side by side */
+  .images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    padding: 0 10px;
   }
-
-  body{
-      background: black;
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
   }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .image {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  

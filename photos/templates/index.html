@@ -1,4 +1,12 @@
+{% load static %}
 {% include "base.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+{% endblock %}
+
 
 {% block content %}
 <br>
@@ -16,8 +24,7 @@
   </nav>
 
   <!-- Jumbotron -->
-  <div class="card card-image" style="background-image:
-    url(https://mdbootstrap.com/img/Photos/Others/forest2.jpg);">
+  <div class="card card-image" style="background-image:url('/static/photos/wood.jpg');background-position:center;">
     <div class="text-white text-center rgba-stylish-strong py-5 px-4">
       <div class="py-5">
 
@@ -37,27 +44,38 @@
 </div>
 <br>
 <div class="container">
-  <form role="search" action="{% url 'searchPage' %}">
-    <div class="md-form my-0">
-      <input class="form-control" name="category" type="text"
-        placeholder="Search By Category">
-      <button type="submit" class="btn btn-sm btn-info">Search</button>
+  
+  <div class="row">
+    <div class="col-md-5 col-sm-6 col-lg-6">
+      <form role="search" action="{% url 'searchPage' %}">
+        <div class="md-form my-0">
+          <input class="form-control" name="category" type="text"
+            placeholder="Search By Category">
+          <button type="submit" class="btn btn-sm btn-info">Search</button>
+        </div>
+      </form>
     </div>
+    <div class="col-md-5 col-sm-6 col-lg-6">
+    <form method="GET" action="/location/">
+    <select>
+    {% for items in location %}
+    <option value="{{ items.name }}" >{{ items.name }}</option>
+    {% endfor %}
+    </select>
+    <input type="submit"  value="View By Location">
   </form>
+    
+
+    </div>
+
+    </div>
+  
   <br>
 
 
   {% for items in images %}
 
-  <script>
-        function myFunction() {
-          var copyText = document.getElementById("myInput{{items.id}}");
-          copyText.select();
-          copyText.setSelectionRange(0, 99999)
-          document.execCommand("copy");
-          alert("Copied the text: " + copyText.value);
-        }
-        </script>
+  
   <div class="row">
 
     <!-- Grid column -->
@@ -82,9 +100,7 @@
 
               </div>
             </div>
-            <h3 class="embed-responsive-item text-center mr-4 mt-2"
-              style="text-decoration: underline; color:black;">{{
-              items.image_name }}</h3>
+            <h3 class="embed-responsive-item text-center mr-4 mt-2" style="text-decoration: underline; color:black;">{{ items.image_name }}</h3>
             <span class="mr-4 text-center"><h5>{{ items.description }}</h5></span>
             <!--Footer-->
             <div class="modal-footer justify-content-center">
@@ -97,17 +113,14 @@
               <a type="button" class="btn-floating btn-sm btn-gplus"><i
                   class="fas fa-grip-horizontal"></i> {{ items.category }}</a>
               <div>
-                <button type="button" class="btn btn-outline-info btn-rounded
-                  btn-md ml-4" onclick="myFunction()">Copy Link</button>
-                <button type="button" class="btn btn-outline-primary btn-rounded
-                  btn-md ml-4" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-info btn-rounded btn-md ml-4" onclick="myFunction('{{items.id}}.url')">Copy Link</button>
+                <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
               </div>
 
               <div>
-                <input class="form-control input-lg" type="text"
-                  value="{{items.image.url}}" id="myInput{{items.id}}">
+                <input class="form-control input-lg" type="text" value="{{items.image.url}}" id="{{items.id}}.url">
               </div>
-
+              
 
             </div>
 
@@ -118,16 +131,25 @@
       </div>
       <!--Modal: Name-->
 
-      <a><img class="img-fluid z-depth-1" src="{{ items.image.url }}" alt="{{
-          items.image_name }}"
-          data-toggle="modal" data-target="#modal{{items.id}}"></a>
 
-          
+      <div class="images">
+        <a><img class="img-fluid z-depth-1" src="{{ items.image.url }}" alt="{{ items.image_name }}" data-toggle="modal" data-target="#modal{{items.id}}"></a>
+      </div>
+
+
 
     </div>
   </div>
 
   {% endfor %}
 </div>
-
+<script>
+  function myFunction(element) {
+    var copyText = document.getElementById(element);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+  }
+  </script>
 {% endblock %}
+

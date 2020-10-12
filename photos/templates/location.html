@@ -3,7 +3,7 @@
 
 {% block styles %}
 
-<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" href="{% static 'css/location.css' %}">
 
 {% endblock %}
 
@@ -11,21 +11,19 @@
 <div class="container">
 
   <div class="row">
-    {% if image %}
-      <h2>Found {{ image|length }} images in {{message}} category</h2>
-    {% else %}
-      <h2> Found 0 images for the search term {{message}}</h2>
+    {% if location %}
+      <h2>Found {{ location|length }} images</h2>
     {% endif %}
 
   </div>
 
   <br>
   
-  {% if image %}
+  {% if location %}
 
   <h2 style="text-decoration: underline;">Images In {{message}}</h2>
 
-  {% for items in image %}
+  {% for items in location %}
 
   <div class="row">
     <div class="col-sm-9 col-md-10 col-lg-10">
