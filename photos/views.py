@@ -29,9 +29,10 @@ def search_images(request):
 def view_by_location(request,location):
     try:
         image_location = Image.filter_by_location(location)
+        message = location
     except DoesNotExist:
         raise Http404()
-    return render(request, 'location.html',{"location": image_location})
+    return render(request, 'location.html',{"location": image_location, 'message':location})
 
 def add_image(request):
     if request.method == "POST":
