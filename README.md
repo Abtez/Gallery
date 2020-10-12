@@ -70,3 +70,15 @@ HTML
 CSS
 
 JavaScript
+
+*****
+
+## Contact Information
+
+Email : ibraabzed@gmail.com​
+
+Slack : Abzed Abdul Mohammed​
+
+Whatsapp : +254759507042
+
+*****
