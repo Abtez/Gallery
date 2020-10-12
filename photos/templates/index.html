@@ -56,16 +56,17 @@
       </form>
     </div>
     <div class="col-md-5 col-sm-6 col-lg-6">
-    <form method="GET" action="/location/">
-    <select>
-    {% for items in location %}
-    <option value="{{ items.name }}" >{{ items.name }}</option>
-    {% endfor %}
-    </select>
-    <input type="submit"  value="View By Location">
-  </form>
-    
+      <!-- Basic dropdown -->
+        <a class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">View Images By Location</a>
 
+        <div class="dropdown-menu">
+        {% for items in location %}
+        <a class="dropdown-item" href="/location/{{ items.name }}">{{ items.name }}</a>
+        {% endfor %}
+        </div>
+        <!-- Basic dropdown -->         
+        
     </div>
 
     </div>

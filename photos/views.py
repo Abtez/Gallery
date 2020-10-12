@@ -25,5 +25,5 @@ def search_images(request):
 def view_by_location(request,location):
     image_location = Image.filter_by_location(location)
     print(image_location)
-    return render(request, 'location.html',{"location": image_location,})
+    return render(request, 'location.html',{"location": image_location})
     
