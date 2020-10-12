@@ -13,6 +13,8 @@
   <div class="row">
     {% if location %}
       <h2>Found {{ location|length }} images</h2>
+      {% else %}
+      <h2>No Images Available... <a href="{% url 'addPage' %}">Add Image</a></h2>
     {% endif %}
 
   </div>

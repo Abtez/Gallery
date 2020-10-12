@@ -34,7 +34,7 @@
         <h2 class="card-title h2 my-4 py-2">Welcome To The Gallery App</h2>
         <p class="mb-4 pb-2 px-md-5 mx-md-5">Add photos to different categories,
           with the location tag and share with your friends!</p>
-        <a class="btn peach-gradient">Get started</a>
+        <a href="{% url 'addPage' %}" class="btn peach-gradient">Get started</a>
 
       </div>
     </div>
@@ -73,14 +73,22 @@
   
   <br>
 
+  <div class="row">
+    {% for items in images %}
+      
+    
+    <div class="col-sm-4 col-md-3 col-lg-4">
+      <div class="card-group">
+        <a><img class="img-fluid z-depth-1 img-thumbnail" src="{{ items.image.url }}" alt="{{ items.image_name }}" data-toggle="modal" data-target="#modal{{items.id}}"></a>
+    </div>
+  </div>
+    {% endfor %}
+  </div>
+
 
   {% for items in images %}
 
-  
-  <div class="row">
-
     <!-- Grid column -->
-    <div class="col-lg-4 col-md-12 mb-4">
 
       <!--Modal: Name-->
       <div class="modal fade" id="modal{{items.id}}" tabindex="-1" role="dialog"
@@ -106,7 +114,6 @@
             <!--Footer-->
             <div class="modal-footer justify-content-center">
 
-
               <a type="button" class="btn-floating btn-sm btn-fb"><i class="fas
                   fa-calendar-alt"></i> {{ items.date }}</a>
               <a type="button" class="btn-floating btn-sm btn-tw"><i class="fas
@@ -131,16 +138,6 @@
         </div>
       </div>
       <!--Modal: Name-->
-
-
-      <div class="images">
-        <a><img class="img-fluid z-depth-1" src="{{ items.image.url }}" alt="{{ items.image_name }}" data-toggle="modal" data-target="#modal{{items.id}}"></a>
-      </div>
-
-
-
-    </div>
-  </div>
 
   {% endfor %}
 </div>

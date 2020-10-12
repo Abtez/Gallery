@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse,Http404
 from .models import *
+from .forms import ImageForm
 
 
 def main(request):
@@ -31,4 +32,16 @@ def view_by_location(request,location):
     except DoesNotExist:
         raise Http404()
     return render(request, 'location.html',{"location": image_location})
+
+def add_image(request):
+    form = ImageForm()
+    if request.method == 'POST':
+        form = ImageForm(request.POST)        
+        if form.is_valid():
+            form.save()
+        print(form)
+        return redirect('/')
+    
+    return render(request, 'form.html', {'form':form})
+    
     
