@@ -34,14 +34,14 @@ def view_by_location(request,location):
     return render(request, 'location.html',{"location": image_location})
 
 def add_image(request):
-    form = ImageForm()
-    if request.method == 'POST':
-        form = ImageForm(request.POST)        
+    if request.method == "POST":
+        form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        print(form)
-        return redirect('/')
+            return redirect('/')
+        else:
+            form = ImageForm
     
-    return render(request, 'form.html', {'form':form})
+    return render(request, 'form.html', {'form':ImageForm})
     
     
