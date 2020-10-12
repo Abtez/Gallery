@@ -8,14 +8,7 @@ body{
   
   
   /* Float four columns side by side */
-  .images {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 70%;
-    padding: 0 10px;
-  }
-  
+
   /* Remove extra left and right margins, due to padding */
   .row {margin: 0 -5px;}
   
@@ -42,3 +35,14 @@ body{
     color: white;
 }
   
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.img-fluid{
+    width: 100%;
+    height: auto;
+}
