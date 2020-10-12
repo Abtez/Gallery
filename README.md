@@ -57,3 +57,16 @@ pillow
 
 Django-Admin
 
+*****
+
+## Technologies Used
+
+Python 3
+
+MdBootstrap
+
+HTML
+
+CSS
+
+JavaScript
