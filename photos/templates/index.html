@@ -77,7 +77,7 @@
     {% for items in images %}
       
     
-    <div class="col-xs-6 col-sm-3 col-md-4 col-lg-4">
+    <div id="images" class="col-xs-6 col-sm-3 col-md-4 col-lg-4">
         <img style="margin-top: 10px;margin-bottom:10px;" class="img-fluid z-depth-1 img-thumbnail" src="{{ items.image.url }}" alt="{{ items.image_name }}" data-toggle="modal" data-target="#modal{{items.id}}">
   </div>
     {% endfor %}
