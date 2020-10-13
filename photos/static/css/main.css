@@ -19,17 +19,6 @@ body{
     clear: both;
   }
   
-  /* Responsive columns */
-  @media screen and (max-width: 600px) {
-    .image {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
-  }
-  
-
-  
 .dropdown-item:hover{
     background-color: blueviolet;
     color: white;
@@ -43,6 +32,14 @@ body{
 }
 
 .img-fluid{
-    width: 100%;
-    height: auto;
+  width:  300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 600px) {
+  .img-fluid{
+    width: 200px;
+    height: 200px;
+  }
 }

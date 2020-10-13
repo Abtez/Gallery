@@ -77,10 +77,8 @@
     {% for items in images %}
       
     
-    <div class="col-sm-4 col-md-3 col-lg-4">
-      <div class="card-group">
-        <a><img class="img-fluid z-depth-1 img-thumbnail" src="{{ items.image.url }}" alt="{{ items.image_name }}" data-toggle="modal" data-target="#modal{{items.id}}"></a>
-    </div>
+    <div class="col-xs-6 col-sm-3 col-md-4 col-lg-4">
+        <img style="margin-top: 10px;margin-bottom:10px;" class="img-fluid z-depth-1 img-thumbnail" src="{{ items.image.url }}" alt="{{ items.image_name }}" data-toggle="modal" data-target="#modal{{items.id}}">
   </div>
     {% endfor %}
   </div>
