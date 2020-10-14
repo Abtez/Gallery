@@ -2,14 +2,16 @@ from django.shortcuts import render, redirect
 from django.http  import HttpResponse,Http404
 from .models import *
 from .forms import ImageForm
-
+from django.contrib import messages 
+from django.core.exceptions import ObjectDoesNotExist
+from cloudinary.forms import cl_init_js_callbacks     
 
 def main(request):
     try:        
         images = Image.objects.all()
         category = Category.objects.all()
         location = Location.objects.all()
-    except DoesNotExist:
+    except ObjectDoesNotExist:
         raise Http404()
     return render(request,'index.html',{'images':images, 'category':category, 'location':location})
 
@@ -30,7 +32,7 @@ def view_by_location(request,location):
     try:
         image_location = Image.filter_by_location(location)
         message = location
-    except DoesNotExist:
+    except ObjectDoesNotExist:
         raise Http404()
     return render(request, 'location.html',{"location": image_location, 'message':location})
 
@@ -41,8 +43,8 @@ def add_image(request):
             form.save()
             return redirect('/')
         else:
-            form = ImageForm
+            return False
     
-    return render(request, 'form.html', {'form':ImageForm})
+    return render(request, 'form.html', {'form':ImageForm,})
     
     

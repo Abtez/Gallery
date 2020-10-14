@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Location(models.Model):
     name = models.CharField(max_length =30)
@@ -13,7 +14,7 @@ class Category(models.Model):
         return self.name
     
 class Image(models.Model):
-    image = models.ImageField(upload_to='images/')
+    image = CloudinaryField('image')
     image_name = models.CharField(max_length=40)
     description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
